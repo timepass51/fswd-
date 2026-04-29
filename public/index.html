@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Course</title>
+
+    <script src="angular.js"></script>
+    <script src="module.js"></script>
+
+    <!-- <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f9;
+            margin: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        input {
+            width: 45%;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .update-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style> -->
+</head>
+
+<body ng-controller="myController">
+
+<div class="container">
+
+    <h1>Course Management System</h1>
+
+    
+    <div class="card">
+        <h2>{{editMode ? "Update Course" : "Add Course"}}</h2>
+
+        <input type="text" ng-model="course.name" placeholder="Course Name">
+        <input type="text" ng-model="course.instructor" placeholder="Instructor">
+        <br>
+        <button class="add-btn" ng-if="!editMode" ng-click="addCourse()">Add</button>
+        <button class="update-btn" ng-if="editMode" ng-click="updateCourse()">Update</button>
+
+        <p class="error">{{error}}</p>
+        <p class="success">{{success}}</p>
+    </div>
+
+    <div class="card">
+        <h2>Course List</h2>
+        <div class="course-item" ng-repeat="c in courses">
+            <div>
+                <b>{{c.name}}</b><br>
+                <small>{{c.instructor}}</small>
+            </div>
+
+            <div>
+                <button class="edit-btn" ng-click="editCourse(c)">Edit</button>
+                <button class="delete-btn" ng-click="deleteCourse(c._id)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
